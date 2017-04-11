@@ -10,10 +10,16 @@ gem 'rake'
 gem 'require_all'
 
 group :test do
+  gem 'shotgun'
   gem 'rspec'
   gem 'pry'
   gem 'pry-nav'
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+end
+
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
 end
