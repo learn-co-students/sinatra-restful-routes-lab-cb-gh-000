@@ -1,2 +1,5 @@
-<!-- Displays a list of recipes -->
-  <!-- Contains links to each recipe's 'show' page -->
+<% @recipes.each do |recipe| %>
+    <h2>
+      <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a>
+    </h2>
+<% end %>
