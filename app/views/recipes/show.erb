@@ -1,7 +1,8 @@
-<!-- Display a single recipe -->
-  <!-- Display recipe name -->
-  <!-- Display recipe ingredients -->
-  <!-- Display recipe cook time -->
+<h2><%= @recipe.name %></h2>
+<h4>Ingredients: <%= @recipe.ingredients %></h4>
+<h4>Cook Time: <%= @recipe.cook_time %></h4>
 
-<!-- Link to delete the recipe -->
-  <!-- Link route should be delete '/recipes/:id/delete' -->
+<form action="/recipes/<%= @recipe.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input id="delete" type="submit" value="Delete">
+</form>
