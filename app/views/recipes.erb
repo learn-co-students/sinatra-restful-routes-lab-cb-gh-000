@@ -1,0 +1,5 @@
+<% @recipes.each do |recipe| %>
+  <%= Helpers.print_my_recipe(recipe) %>
+  <a href="/recipes/<%= recipe.id %>">Link</a>
+  <br>
+<% end %>

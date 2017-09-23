@@ -15,6 +15,7 @@ class ApplicationController < Sinatra::Base
 
   post '/recipes' do
     @recipe = Recipe.create(params)
+    redirect to "/recipes/#{@recipe.id}"
   end
 
 
@@ -29,7 +30,7 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  delete '/recipes/:id' do
+  delete '/recipes/:id/delete' do
     @recipe = Recipe.find_by_id(params[:id])
     @recipe.delete
 
@@ -41,16 +42,23 @@ class ApplicationController < Sinatra::Base
   # This controller action should update the entry in the database with
   # the changes, and then redirect to the recipe show page
   get '/recipes/:id/edit' do
-
+    @recipe = Recipe.find(params[:id])
+    erb :edit
   end
 
   patch '/recipes/:id' do
-
+    @recipe = Recipe.find(params[:id])
+    @recipe.name = params[:name]
+    @recipe.ingredients = params[:ingredients]
+    @recipe.cook_time = params[:cook_time]
+    @recipe.save
+    redirect to "/recipes/#{@recipe.id}"
   end
 
   # (index action) that displays all the recipes in the database.
   get '/recipes' do
-
+    @recipes = Recipe.all
+    erb :recipes
   end
 
 end
