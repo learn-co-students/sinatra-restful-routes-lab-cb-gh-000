@@ -1,0 +1,6 @@
+<%= Helpers.print_my_recipe(@recipe) %>
+
+<form action="/recipes/<%= @recipe.id %>" method="post">
+  <input id="hidden" name="_method" value="delete"
+  <input type="submit" value="Delete">
+</form>
